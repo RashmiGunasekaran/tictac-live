@@ -60,3 +60,5 @@ gem 'ember-cli-rails'
 gem "bulma-rails", "~> 0.8.0"
 
 gem 'font-awesome-sass', '~> 4.7.0'
+
+gem 'jquery-rails'
