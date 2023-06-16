@@ -3,7 +3,6 @@
   <head>
     <title>TictacGame</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="https://unpkg.com/bulmaswatch/flatly/bulmaswatch.min.css">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,19 +11,6 @@
   </head>
 
   <body>
-    <div class="tile is-parent">
-      <article class="tile is-child notification is-primary ">
-        <div class="columns is-centered">
-          <p class="title">Tic Tac Toe</p>
-        </div>
-        <div class="content">
-          <section class="section is-large">
-            <div class="columns is-centered">
-                <%= yield %>
-            </div>
-          </section>
-        </div>
-      </article>
-    </div>
+    <%= yield %>
   </body>
 </html>
