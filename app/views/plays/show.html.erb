@@ -1,0 +1,33 @@
+<%= form_for @play do |f| %>
+  <table class="table is-bordered is-primary" style="width: 250px; height: 250px;">
+    <thead></thead>
+    <tbody>
+      <%v=1%>
+      <% (1..3).each do |j| %>
+        <tr>
+          <% (1..3).each do |i| %>
+            <td>
+            <label class="checkspace">
+              <%= f.check_box :positions, {:multiple => true,checked: (checked_pos(@play.positions["X"],@play.positions["O"],v))}, v%>
+              <%= content_tag :span, class: "checkmark #{checked_player(@play.positions["O"],v) ? 'omark' : ''}" do -%><% end -%>
+            </label>
+            <%v=v+1%>
+            </td>
+          <%end%>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+  <%= content_tag :div, class: "column" do -%>
+    <%= content_tag :div, class: "columns is-mobile" do -%>
+      <%= content_tag :div, class: "column" do -%>
+      <%= f.button "Reset", type: "reset", class:"button is-warning" %>
+      <% end -%>
+      <%= content_tag :div, class: "column" do -%>
+        <%= render partial: "delete", locals: {play: @play} %>
+      <% end -%>
+    <% end -%>
+    <% end -%>
+<% end -%>
+
+<%# <%= javascript_pack_tag 'play_show' %> %>

@@ -1,2 +1,28 @@
 <%= include_ember_script_tags :frontend %>
 <%= include_ember_stylesheet_tags :frontend %>
+<div id="ember-application"></div>
+<%= form_with url: "/plays" do |f| %>
+  <%= f.label :fill_your_data %>
+  <%= content_tag :div, class: "field" do -%>
+    <%= content_tag :p, class: "control has-icons-left has-icons-right" do -%>
+      <%= f.text_field :name, class: "input is-medium", :required => true, placeholder: "Name"%>
+      <%= content_tag :span, class: "icon is-small is-left" do -%><i class="fa fa-user"></i><% end -%>
+    <% end -%>
+  <% end -%>
+  <%= content_tag :div, class: "field" do -%>
+    <%= content_tag :p, class: "control has-icons-left has-icons-right" do -%>
+      <%= f.email_field :email, class: "input is-medium", :required => true, placeholder: "Email"%>
+      <%= content_tag :span, class: "icon is-small is-left" do -%><i class= "fa fa-envelope"></i><% end -%>
+    <% end -%>
+    <% end -%>
+  <%= content_tag :div, class: "field" do -%>
+    <%= f.label :level, "Levels:" %>
+      <%= f.radio_button :level, "easy", :checked => true %>
+      <%= f.label :easy, :class => "radio" %>
+      <%= f.radio_button :level, "hard"%>
+      <%= f.label :hard, :class => "radio" %>
+  <% end -%>
+<%= content_tag :div, class: "field" do -%>
+  <%= f.submit "Start Game", class: "button is-danger"%>
+<% end -%>
+<% end %>

@@ -11,6 +11,21 @@
   </head>
 
   <body>
-    <%= yield %>
+    <body>
+    <div class="tile is-parent">
+      <article class="tile is-child notification is-primary ">
+        <div class="columns is-centered">
+          <p class="title">Tic Tac Toe</p>
+        </div>
+        <div class="content">
+          <section class="section is-large">
+            <div class="columns is-centered">
+            <%= yield %>
+            </div>
+          </section>
+        </div>
+      </article>
+    </div>
+  </body>
   </body>
 </html>

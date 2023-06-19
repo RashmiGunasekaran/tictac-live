@@ -1,2 +1,26 @@
 module ApplicationHelper
+  def checked_pos(player1_position,player2_position,value)
+    if !player1_position.nil? && !player2_position.nil?
+    if player1_position.include?(value) || player2_position.include?(value)
+      return true
+    else
+      return false
+    end
+  else
+    return false
+  end
+  end
+
+  def checked_player(player,value)
+    if !player.nil?
+    if player.include?(value)
+      return true
+    else
+      return false
+    end
+  else
+    return false
+  end
+  end
+
 end

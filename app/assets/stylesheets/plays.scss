@@ -1,3 +1,58 @@
 // Place all the styles related to the plays controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import 'bulma';
+@import "font-awesome-sprockets";
+@import "font-awesome";
+/* The checkspace */
+.checkspace {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.checkspace input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: white;
+  padding: 30px;
+}
+
+.omark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #white;
+  padding: 30px;
+}
+
+/* On mouse-over, add a grey background color */
+.checkspace:hover input ~ .checkmark {
+  // background-color: #ccc;
+}
+
+.checkspace:hover input ~ .omark {
+  // background-color: #ccc;
+}
