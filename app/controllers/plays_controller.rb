@@ -1,7 +1,12 @@
 class PlaysController < ApplicationController
+
+  def bootstrap
+  end
+
   def new
     @play = Play.new
   end
+  
   def create
     @play = Play.new(play_params)
     if @play.save
