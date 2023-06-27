@@ -1,12 +1,10 @@
 class PlaysController < ApplicationController
-
-  def bootstrap
-  end
-
+ skip_before_action :verify_authenticity_token
+ 
   def new
     @play = Play.new
   end
-  
+
   def create
     @play = Play.new(play_params)
     if @play.save
