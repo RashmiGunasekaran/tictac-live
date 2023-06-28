@@ -63,3 +63,5 @@ gem 'bulma-extensions-rails', '~> 1.0.30'
 gem 'font-awesome-sass', '~> 4.7.0'
 
 gem 'jquery-rails'
+
+gem 'devise'

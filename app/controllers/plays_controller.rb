@@ -1,16 +1,26 @@
 class PlaysController < ApplicationController
  skip_before_action :verify_authenticity_token
+ before_action :authenticate_user!
 
   def new
     @play = Play.new
   end
 
   def create
-    @play = Play.new(play_params)
-    if @play.save
-      redirect_to @play
-    end
+    # @play = Play.new(play_params)
+    #
+    # if @play.save
+    #   redirect_to @play
+    # end
+    @play = current_user.plays.build(play_params)
+      if @play.save!
+          redirect_to @play
+      else
+          render 'new'
+      end
   end
+
+
 
   def update
     @play= Play.find(params[:id])
@@ -88,7 +98,6 @@ class PlaysController < ApplicationController
   def auto_player play
     p1 =play.positions["X"].flatten().map(&:to_i)
     tac = ([*1..9]-p1).sample
-    raise tac.inspect
     if play.positions.has_key?("O")
       play.positions["O"]<<tac
     else
@@ -137,6 +146,6 @@ class PlaysController < ApplicationController
   end
 
   def play_params
-    params.permit(:name, :email, :level, :positions => {})
+    params.permit(:name, :email, :user_id, :level, :positions => {})
   end
 end

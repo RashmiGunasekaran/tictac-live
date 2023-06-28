@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   mount_ember_app :frontend, to: "/ember"
   root to: 'plays#index'
-  #root 'plays#bootstrap'
-  # get '/*path' => 'ember#bootstrap'
+
+  devise_for :users
 
   resources :plays do
   post 'auto_player' , on: :member
