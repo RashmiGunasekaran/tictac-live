@@ -15,11 +15,14 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    
+
     <div class="tile is-parent">
       <article class="tile is-child notification is-primary ">
         <div class="columns is-centered">
           <p class="title">Tic Tac Toe</p>
+        </div>
+        <div class="is-pulled-right">          
+           <%= button_to "Log Out", destroy_user_session_path, :class => "button is-danger", :method => :delete %>
         </div>
         <div class="content">
           <section class="section is-large">

@@ -108,6 +108,7 @@ class PlaysController < ApplicationController
       p2=play.positions["O"]
       if play.positions["X"].count >=3
         won?(p1)
+        render 'new'
       end
     end
 
