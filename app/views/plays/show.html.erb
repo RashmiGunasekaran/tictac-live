@@ -1,4 +1,5 @@
 <%= form_for @play do |f| %>
+<%=@play.positions%>
   <table class="table is-bordered is-primary" style="width: 250px; height: 250px;">
     <thead></thead>
     <tbody>
@@ -8,8 +9,9 @@
           <% (1..3).each do |i| %>
             <td>
             <label class="checkspace">
-              <%= f.check_box :positions, {:multiple => true,checked: (checked_pos(@play.positions["X"],@play.positions["O"],v))}, v%>
-              <%= content_tag :span, class: "checkmark #{checked_player(@play.positions["O"],v) ? 'omark' : ''}" do -%><% end -%>
+              <%= f.check_box @play.positions["X"], {:multiple => true,checked:(checked_pos(@play.positions["X"],@play.positions["O"],v))}, v%>
+              <%= content_tag :span, class: "checkmark #{checked_player1(@play.positions["X"],v) ? 'xmark' : ''}" do -%><% end -%>
+              <%= content_tag :span, class: "checkmark #{checked_player2(@play.positions["O"],v) ? 'omark' : ''}" do -%><% end -%>
             </label>
             <%v=v+1%>
             </td>

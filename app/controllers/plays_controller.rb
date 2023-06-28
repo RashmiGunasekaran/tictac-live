@@ -1,6 +1,6 @@
 class PlaysController < ApplicationController
  skip_before_action :verify_authenticity_token
- 
+
   def new
     @play = Play.new
   end
@@ -14,12 +14,18 @@ class PlaysController < ApplicationController
 
   def update
     @play= Play.find(params[:id])
-    if @play.positions.empty?
-      @play.update_attributes(play_params)
-    else
-      @play.positions["X"]<<play_params[:positions]["X"]
-    end
+    # raise @play.positions["X"].length().inspect
+    # if @play.positions["X"].length()<3
+      if @play.positions.empty?
+        @play.update(play_params)
+      else
+        @play.positions["X"]<<play_params[:positions]["X"]
+      end
+    # else
+    #   #prompt for reset
+    # end
 
+    #level variations of the game
     if @play.level=="easy"
       auto_player(@play)
     else
@@ -82,6 +88,7 @@ class PlaysController < ApplicationController
   def auto_player play
     p1 =play.positions["X"].flatten().map(&:to_i)
     tac = ([*1..9]-p1).sample
+    raise tac.inspect
     if play.positions.has_key?("O")
       play.positions["O"]<<tac
     else
@@ -113,7 +120,8 @@ class PlaysController < ApplicationController
     win_position6=[3,5,7]
     win_position7=[4,5,6]
     win_position8=[2,4,8]
-    if (play_positions.count=3 && play_positions.um==15) || ((play_positions&win_position1)==win_position1) || ((play_positions&win_position2)==win_position2) || ((play_positions&win_position3)==win_position3)
+
+    if (play_positions.length()==3 && play_positions.sum==15) || ((play_positions&win_position1)==win_position1) || ((play_positions&win_position2)==win_position2) || ((play_positions&win_position3)==win_position3)
       return true
     elsif summation.include?(win_position5 || win_position6 || win_position7 || win_position8)
       return true
